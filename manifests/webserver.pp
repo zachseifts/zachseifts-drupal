@@ -98,10 +98,6 @@ class drupal::webserver {
         creates => '/usr/bin/drush'
     }
 
-    package { mysql-client:
-        ensure => latest,
-    }
-
     package { curl:
         ensure => latest,
     }

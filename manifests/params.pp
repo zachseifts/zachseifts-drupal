@@ -31,7 +31,7 @@
 #
 
 class drupal::params {
-    $apache_user = 'www-data',
-    $apache_group = 'www-data',
-    $vhost_dir = '/var/www',
+    $apache_user = 'www-data'
+    $apache_group = 'www-data'
+    $vhost_dir = '/var/www'
 }
