@@ -1,0 +1,17 @@
+{
+  "name": "zachseifts-drupal",
+  "version": "0.1.0",
+  "author": "Zach Seifts <zach@seifts.us>",
+  "summary": "A development environment for building Drupal applications.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/zachseifts/zachseifts-drupal.git",
+  "project_page": "https://github.com/zachseifts/zachseifts-drupal",
+  "issues_url": "https://github.com/zachseifts/zachseifts-drupal/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    }
+  ]
+}
+
