@@ -33,6 +33,6 @@
 #
 
 class drupal {
-
-
+    include drupal::webserver
+    include drupal::database
 }

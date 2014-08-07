@@ -31,6 +31,7 @@
 #
 
 class drupal::database {
-
-
+    class { '::mysql::server':
+        root_password => 'root',
+    }
 }
