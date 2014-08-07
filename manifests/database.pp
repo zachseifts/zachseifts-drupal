@@ -1,6 +1,6 @@
-# == Class: drupal
+# == Class: drupal::database
 #
-# Provides a development environment building Drupal sites.
+# Provides database configuration
 #
 # === Parameters
 #
@@ -23,16 +23,14 @@
 #
 # === Examples
 #
-#  class { drupal:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
+#  include drupal::database
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Zach Seifts <zach@seifts.us>
 #
 
-class drupal {
+class drupal::database {
 
 
 }

@@ -1,6 +1,6 @@
-# == Class: drupal
+# == Class: drupal::params
 #
-# Provides a development environment building Drupal sites.
+# Provides default paramters for this class
 #
 # === Parameters
 #
@@ -23,16 +23,15 @@
 #
 # === Examples
 #
-#  class { drupal:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
+#  include drupal::params
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Zach Seifts <zach@seifts.us>
 #
 
-class drupal {
-
-
+class drupal::params {
+    $apache_user = 'www-data',
+    $apache_group = 'www-data',
+    $vhost_dir = '/var/www',
 }

@@ -1,6 +1,6 @@
-# == Class: drupal
+# == Class: drupal::webserver
 #
-# Provides a development environment building Drupal sites.
+# Provides a webserver for your drupal environment.
 #
 # === Parameters
 #
@@ -23,16 +23,14 @@
 #
 # === Examples
 #
-#  class { drupal:
-#    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
-#  }
+#  include drupal::webserver
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Zach Seifts <zach@seifts.us>
 #
 
-class drupal {
+class drupal::webserver {
 
 
 }
