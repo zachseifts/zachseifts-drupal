@@ -17,7 +17,7 @@
 #
 
 class drupal::database {
-    $root_password = undef,
+    $root_password = undef
 } {
     if $root_password {
         $root_passwd = $root_password
