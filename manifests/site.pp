@@ -2,7 +2,7 @@
 #
 # Provides a resource to create a drupal site.
 #
-# === Variables
+# === Parameters
 #
 # [site_name]
 #   The name of the site, it defaults to the title.
