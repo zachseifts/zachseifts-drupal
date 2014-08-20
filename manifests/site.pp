@@ -38,7 +38,7 @@
 #
 # === Authors
 #
-# Zach Seifts <zach@seifts.us
+# Zach Seifts <zach@seifts.us>
 #
 
 define drupal::site ($site_name = $title,
