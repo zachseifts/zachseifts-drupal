@@ -16,9 +16,9 @@
 # Zach Seifts <zach@seifts.us>
 #
 
-class drupal::database {
+class drupal::database (
     $root_password = undef
-} {
+) {
     if $root_password {
         $root_passwd = $root_password
     } else {
