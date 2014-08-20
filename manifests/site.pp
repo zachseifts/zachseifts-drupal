@@ -27,7 +27,13 @@
 #
 # === Examples
 #
-#  drupal::site { 'example.com'
+#  drupal::site { 'example':
+#      tld => 'com',
+#      priority => '10',
+#      port => '80',
+#      database_name => 'database_name',
+#      database_user => 'database_user',
+#      database_password => 'database_password',
 #  }
 #
 # === Authors
