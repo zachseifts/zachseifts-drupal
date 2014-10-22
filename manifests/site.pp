@@ -10,9 +10,6 @@
 # [tld]
 #   The domain of the site, default is .local.
 #
-# [vhost_dir]
-#   The document root of the site,  default is /var/www.
-#
 # [priority]
 #   Specify a priority for this site, the default is 15.
 #
@@ -37,7 +34,6 @@
 #      database_name => 'database_name',
 #      database_user => 'database_user',
 #      database_password => 'database_password',
-#      vhost_dir => '/vagrant/www',
 #  }
 #
 # === Authors
@@ -49,18 +45,13 @@ define drupal::site ($site_name = $title,
                      $tld = 'local',
                      $priority = 15,
                      $port = 80,
-                     $vhost_dir = undef,
                      $database_name = $title,
                      $database_user = $title,
                      $database_password = $title,
-
                      ) {
 
     include drupal::params
-    
-    if $vhost_dir == undef {
-                     $vhost_dir = $drupal::params::vhost_dir
-    }
+    $vhost_dir = $drupal::params::vhost_dir
 
     apache::vhost { "${site_name}.${tld}":
         priority => $priority,
