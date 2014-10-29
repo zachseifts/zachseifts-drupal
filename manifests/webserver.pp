@@ -15,71 +15,39 @@ class drupal::webserver {
 
     class { 'apache':
         default_vhost => false,
-        mpm_module => 'prefork',
+        mpm_module => false,
     }
 
-    apache::mod { 'rewrite': }
-
-    class { 'apache::mod::php':
-        require => Package["php5"]
+    class { 'apache::mod::prefork':
+        startservers    => "5",
+        minspareservers => "3",
+        maxspareservers => "3",
+        serverlimit     => "10",
+        maxclients      => "10",
     }
 
-    package { php5:
-        ensure => latest,
-    }
+    class { 'apache::mod::php': }
 
-    package { php5-gd:
-        ensure => latest,
-        require => Package['php5']
-    }
-
-    package { php5-mysql:
-        ensure => latest,
-        require => Package['php5']
-    }
-
-    package { php5-curl:
-        ensure => latest,
-        require => Package['php5']
-    }
-
-    package { php5-common:
-        ensure => latest,
-        require => Package['php5']
-    }
-
-    package { php5-cli:
-        ensure => latest,
-        require => Package['php5']
-    }
-
-    package { php-apc:
-        ensure => latest,
-        require => Package['php5']
-    }
-
-    package { php-pear:
-        ensure => latest,
-        require => Package['php5']
-    }
-
-    package { php-console-table:
-        ensure => latest,
-        require => [Package['php5'], Package['php-pear']]
-    }
-
-    package { php5-memcached:
-        ensure => latest,
-        require => Package['php5']
+    class { '::php':
+        composer => true,
+        pear => true,
+        fpm => false,
+        extensions => {
+            gd => {},
+            mysql => {},
+            'Console_Table' => {
+                provider => 'pear',
+                package_prefix => '',
+            },
+            apc => {
+                package_prefix => 'php-pecl-',
+            },
+        },
     }
 
     exec { 'install drush':
         command => '/usr/bin/pear channel-discover pear.drush.org && /usr/bin/pear install drush/drush',
         require => Package['php-console-table'],
         creates => '/usr/bin/drush'
-    }
-
-    package { curl:
-        ensure => latest,
     }
 }

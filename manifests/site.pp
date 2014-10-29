@@ -67,12 +67,12 @@ define drupal::site ($site_name = $title,
         ip => '127.0.0.1',
     }
 
-    cron { "${site_name}.${tld}":
-        command => "/usr/bin/drush -r ${site_name}.${tld} cron >/dev/null",
-        user => $drupal::params::apache_user,
-        minute => 0,
-        require => Host["${site_name}.${tld}"],
-    }
+   #cron { "${site_name}.${tld}":
+   #    command => "/usr/bin/drush -r ${site_name}.${tld} cron >/dev/null",
+   #    user => $drupal::params::apache_user,
+   #    minute => 0,
+   #    require => Host["${site_name}.${tld}"],
+   #}
 
     mysql::db { $database_name:
         user => $database_user,

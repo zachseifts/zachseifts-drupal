@@ -12,7 +12,17 @@
 #
 
 class drupal::params {
-    $apache_user = 'www-data'
-    $apache_group = 'www-data'
+
+    case $osfamily {
+        'RedHat': {
+            $apache_user = 'apache'
+            $apache_group = 'apache'
+        }
+        'Debian': {
+            $apache_user = 'www-data'
+            $apache_group = 'www-data'
+        }
+    }
+
     $vhost_dir = '/var/www'
 }
