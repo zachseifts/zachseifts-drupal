@@ -35,6 +35,8 @@ class drupal::webserver {
         extensions => {
             gd => {},
             mysql => {},
+            xml => {},
+            mbstring => {},
             'Console_Table' => {
                 provider => 'pear',
                 package_prefix => '',
@@ -47,7 +49,6 @@ class drupal::webserver {
 
     exec { 'install drush':
         command => '/usr/bin/pear channel-discover pear.drush.org && /usr/bin/pear install drush/drush',
-        require => Package['php-console-table'],
         creates => '/usr/bin/drush'
     }
 }
