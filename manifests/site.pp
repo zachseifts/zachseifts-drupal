@@ -60,6 +60,21 @@ define drupal::site ($site_name = $title,
         override => "All",
         docroot_owner => $drupal::params::apache_user,
         docroot_group => $drupal::params::apache_group,
+        directories => [
+          {
+            path => "${vhost_dir}/${site_name}.${tld}",
+            allow_override =>['All'],
+            options => ['-Indexes','FollowSymLinks','MultiViews'],
+            custom_fragment => '
+            RewriteEngine on
+            RewriteBase /
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+            ',
+          },
+        ],
+
     }
 
     host { "${site_name}.${tld}":

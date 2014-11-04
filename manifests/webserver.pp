@@ -27,6 +27,7 @@ class drupal::webserver {
     }
 
     class { 'apache::mod::php': }
+    include apache::mod::rewrite
 
     class { '::php':
         composer => true,
