@@ -38,13 +38,7 @@ class drupal::webserver {
             mysql => {},
             xml => {},
             mbstring => {},
-            'Console_Table' => {
-                provider => 'pear',
-                package_prefix => '',
-            },
-            apc => {
-                package_prefix => 'php-pecl-',
-            },
+            apc => {},
         },
     }
 
