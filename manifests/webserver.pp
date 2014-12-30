@@ -48,8 +48,12 @@ class drupal::webserver {
         },
     }
 
-    exec { 'install drush':
-        command => '/usr/bin/pear channel-discover pear.drush.org && /usr/bin/pear install drush/drush',
-        creates => '/usr/bin/drush'
+    include pear
+    pear::package { 'PEAR': }
+    pear::package { 'Console_Table': }
+    pear::package { 'drush':
+        version => '6.2.0.0',
+        repository => 'drush.pear.org',
+        require => Pear::Package['PEAR'],
     }
 }
