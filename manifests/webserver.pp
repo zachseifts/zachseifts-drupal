@@ -37,7 +37,6 @@ class drupal::webserver {
             gd => {},
             mysql => {},
             xml => {},
-            mbstring => {},
             apc => {},
         },
     }
